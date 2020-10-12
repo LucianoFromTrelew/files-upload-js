@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Files upload</title>
+  </head>
+  <body>
+    <h1>Files upload</h1>
+    <form
+      action="file"
+      method="POST"
+      enctype="multipart/form-data"
+      onsubmit="onSubmit()"
+    >
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" />
+      <label for="avatar">Avatar</label>
+      <input type="file" name="avatar" id="avatar" />
+
+      <label for="submit">Submit</label>
+      <input type="submit" />
+    </form>
+    <button onclick="onAjaxButtonClick()">AJAX</button>
+  </body>
+
+  <script>
+    const onSubmit = () => {
+      alert("Form submitted correctly! (HTML)");
+    };
+
+    const onAjaxButtonClick = async () => {
+      /**
+      We could also create a new FormData object passing the form node as a parameter
+      const formData = new FormData(document.querySelector("form"));
+      */
+      const form = document.querySelector("form");
+      const formData = new FormData();
+      formData.append("name", form.name.value);
+      formData.append("avatar", form.avatar.files[0]);
+      await fetch("/file", { body: formData, method: "POST" });
+      alert("Form submitted correctly! (AJAX)");
+    };
+  </script>
+</html>

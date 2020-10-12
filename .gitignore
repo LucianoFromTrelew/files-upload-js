@@ -3,5 +3,6 @@ bin
 dist
 lib
 build
+uploads
 obj
 *.log
