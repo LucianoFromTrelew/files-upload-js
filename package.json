@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -e ts --exec 'npm run build && npm run build'",
+    "dev": "nodemon -e ts --exec 'npm run start'",
     "prebuild": "rm -rf dist",
     "build": "tsc",
     "prestart": "npm run build",
